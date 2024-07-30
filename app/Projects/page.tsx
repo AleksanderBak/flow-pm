@@ -1,18 +1,9 @@
 import ProjectNavigation from "@/components/ProjectNavigation";
 import { getProjects } from "@/utils/db";
-
-const ProjectLink = ({ project }: { project: any }) => {
-  return (
-    <div className="flex flex-row px-3 py-6 my-2">
-      <h2 className="text-neutral-900 font-bold mr-36">{project.name}</h2>
-      <p>{project.updated}</p>
-    </div>
-  );
-};
+import ProjectLink from "@/components/ProjectLink";
 
 const Projects = async () => {
   const projects = await getProjects();
-  console.log(projects);
   return (
     <div className="m-8">
       <ProjectNavigation />

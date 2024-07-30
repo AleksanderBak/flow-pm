@@ -1,7 +1,6 @@
 import ProjectNavigation from "@/components/ProjectNavigation";
 import TaskGroup from "@/components/TaskGroup";
 import { FaPlus } from "react-icons/fa";
-import PocketBase from "pocketbase";
 
 const NewGroupButton = () => {
   return (
@@ -10,19 +9,6 @@ const NewGroupButton = () => {
     </div>
   );
 };
-
-const pb = new PocketBase("http://127.0.0.1:8090");
-
-const authData = await pb.admins.authWithPassword(
-  "aleksanderbak9@gmail.com",
-  "qwertyuiop123"
-);
-
-const tasks = await pb.collection("tasks").getFullList({
-  sort: "-created",
-});
-
-console.log(tasks);
 
 const dummy_tasks = [
   {
@@ -48,7 +34,7 @@ const ProjectDetails = () => {
       <h1 className="text-4xl font-bold mb-8">Project Name -</h1>
       <ProjectNavigation />
       <div className="flex flex-row items-start">
-        <TaskGroup title={"ToDo"} tasks={tasks} />
+        <TaskGroup title={"ToDo"} tasks={[]} />
         <TaskGroup title={"In progress"} tasks={[]} />
         <TaskGroup title={"With Problems"} tasks={dummy_tasks} />
         <TaskGroup title={"Additional"} tasks={[]} />
