@@ -1,6 +1,8 @@
+"use client";
 import ProjectNavigation from "@/components/ProjectNavigation";
 import TaskGroup from "@/components/TaskGroup";
 import { FaPlus } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 const NewGroupButton = () => {
   return (
@@ -29,9 +31,13 @@ const dummy_tasks = [
 ];
 
 const ProjectDetails = () => {
+  const pathname = usePathname();
+  const project_name = pathname.split("/")[pathname.split("/").length - 1];
+  console.log(project_name);
+
   return (
     <div className="m-8">
-      <h1 className="text-4xl font-bold mb-8">Project Name -</h1>
+      <h1 className="text-4xl font-bold mb-8">{project_name}</h1>
       <ProjectNavigation />
       <div className="flex flex-row items-start">
         <TaskGroup title={"ToDo"} tasks={[]} />
